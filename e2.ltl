@@ -1,0 +1,35 @@
+#define p1 (packet_send[2]==1)
+#define q1 (packet_received_at[2]==1)
+#define r1 (packet_received_at[2]==0)
+
+#define p2 (packet_send[3]==1)
+#define q2 (packet_received_at[3]==1)
+#define r3 (packet_received_at[3]==0)
+
+never {    /*  (<>p1 ->q1) && (<>p2 -> q2) */
+accept_init:
+T0_init:
+	if
+	:: ((q1) && (q2)) -> goto accept_all
+	:: (! ((p2)) && (q1)) -> goto accept_S5
+	:: (! ((p1)) && (q2)) -> goto accept_S16
+	:: (! ((p1)) && ! ((p2))) -> goto accept_S14
+	fi;
+accept_S5:
+T0_S5:
+	if
+	:: (! ((p2))) -> goto accept_S5
+	fi;
+accept_S14:
+T0_S14:
+	if
+	:: (! ((p1)) && ! ((p2))) -> goto accept_S14
+	fi;
+accept_S16:
+T0_S16:
+	if
+	:: (! ((p1))) -> goto accept_S16
+	fi;
+accept_all:
+	skip
+}

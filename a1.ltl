@@ -1,0 +1,26 @@
+#define p (rrtoken_node0[1] == 4)
+#define q (rrtoken_node0[1] == 0)
+
+never {    /* [](p-> <>q) */
+T0_init:
+	if
+	:: ((! ((p)) || (q))) -> goto accept_S20
+	:: (1) -> goto T0_S27
+	fi;
+accept_S20:
+	if
+	:: ((! ((p)) || (q))) -> goto T0_init
+	:: (1) -> goto T0_S27
+	fi;
+accept_S27:
+	if
+	:: ((q)) -> goto T0_init
+	:: (1) -> goto T0_S27
+	fi;
+T0_S27:
+	if
+	:: ((q)) -> goto accept_S20
+	:: (1) -> goto T0_S27
+	:: ((q)) -> goto accept_S27
+	fi;
+}
