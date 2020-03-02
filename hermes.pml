@@ -1,3 +1,6 @@
+
+/**** SPIN model of network-on-chip for formal verification **********/
+
 /******************************Changes in this code************************
 *  Date : 23 June 2010                                                                                        *
 *  Retained changes for ver.1 and extending to 9 routers in ver.2             *
